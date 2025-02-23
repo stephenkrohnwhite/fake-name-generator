@@ -13,7 +13,7 @@ const NameList = () => {
     /*
       * In my interview, I made the mistake of not wrapping the state setter 
       * inside of my fetchUserData function, and then I added an await to the fetchUserData function call
-      * This got me significantly off track as I was trying to nervously debug the fetch while.
+      * This got me significantly off track as I was trying to debug the fetch call.
       * useEffect's top-level callback cannot be async and therefore would not accept an await outside of the fetchUserData function.
       * My Code in the sandbox looked something like this:
 

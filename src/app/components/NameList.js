@@ -11,16 +11,22 @@ const NameList = () => {
 
   useEffect(() => {
     /*
-      In my interview, I made the mistake of not wrapping the state setter inside of my fetchUserData function, and then I added an await to the fetchUserData function call - This got me significantly off track as I was trying to debug this statement for a 
+      * In my interview, I made the mistake of not wrapping the state setter 
+      * inside of my fetchUserData function, and then I added an await to the fetchUserData function call
+      * This got me significantly off track as I was trying to nervously debug the fetch while.
+      * useEffect's top-level callback cannot be async and therefore would not accept an await outside of the fetchUserData function.
+      * My Code in the sandbox looked something like this:
+
       const fetchUserData = async () => {
-      try {
         let res = await fetch(`https://randomuser.me/api?results=${userCount}`);
         let data = await res.json();
-        setUsers(data.results);
-      } catch (e) {
-        console.log(e);
-      }
-    };
+        return data;
+      };
+
+      let userData = await fetchUserData();
+      setUsers(userData);
+
+      Instead, I should be doing the following:
     */
     const fetchUserData = async () => {
       try {

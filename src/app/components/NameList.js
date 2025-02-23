@@ -10,6 +10,18 @@ const NameList = () => {
   const [pageIndex, setPageIndex] = useState(1);
 
   useEffect(() => {
+    /*
+      In my interview, I made the mistake of not wrapping the state setter inside of my fetchUserData function, and then I added an await to the fetchUserData function call - This got me significantly off track as I was trying to debug this statement for a 
+      const fetchUserData = async () => {
+      try {
+        let res = await fetch(`https://randomuser.me/api?results=${userCount}`);
+        let data = await res.json();
+        setUsers(data.results);
+      } catch (e) {
+        console.log(e);
+      }
+    };
+    */
     const fetchUserData = async () => {
       try {
         let res = await fetch(`https://randomuser.me/api?results=${userCount}`);
